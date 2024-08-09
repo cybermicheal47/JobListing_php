@@ -1,0 +1,16 @@
+{
+  "name": "hp/workopia",
+  "autoload": {
+    "psr-4": {
+      "Framework\\": "Framework/",
+      "App\\": "App/"
+    }
+  },
+  "authors": [
+    {
+      "name": "cybermicheal47",
+      "email": "65826184+cybermicheal47@users.noreply.github.com"
+    }
+  ],
+  "require": {}
+}

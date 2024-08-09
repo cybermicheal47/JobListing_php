@@ -16,7 +16,7 @@ function basePath($path = ''){
  * @param string $name The name of the view file (without extension).
  */
 function loadView($name, $data = []){
-   $viewpath = basePath("views/{$name}.view.php");
+   $viewpath = basePath("App/views/{$name}.view.php");
    if(file_exists($viewpath)){
     extract($data);
       require $viewpath;
@@ -31,7 +31,7 @@ function loadView($name, $data = []){
  * @param string $name The name of the partial view file (without extension).
  */
 function loadPartial($name){
-  $partialPath = basePath("views/partials/{$name}.php");
+  $partialPath = basePath("App/views/partials/{$name}.php");
   if(file_exists($partialPath)){
     require $partialPath;
   } else {
@@ -59,6 +59,12 @@ function inspectandDie($value){
   echo '<pre>'; 
   die(var_dump($value));
   echo '</pre>';
+}
+
+
+
+function sanitize($dirty){
+return filter_var(trim($dirty),FILTER_SANITIZE_SPECIAL_CHARS);
 }
 
 ?>

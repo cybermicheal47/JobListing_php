@@ -1,5 +1,6 @@
 <?php
 
+namespace Framework;
 //  $routes = require basePath('routes.php');
 
 // if(array_key_exists($uri,$routes)){
@@ -85,9 +86,15 @@ exit;
 
 
  public function route ($uri,$method){
+// Check for method override using _method
+if ($method === 'POST' && isset($_POST['_method'])) {
+  $method = strtoupper($_POST['_method']);
+}
+
+
 foreach($this->routes as $route){
   if($route['uri'] ===$uri && $route['method'] === $method){
-    require  basePath($route['controller']);
+    require  basePath("App/" . $route['controller']);
     return;
   } 
 }

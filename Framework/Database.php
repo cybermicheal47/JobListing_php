@@ -1,6 +1,10 @@
 <?php
 
-class Database{
+namespace Framework;
+
+use PDO;
+
+class Database  {
 
 public $conn;
 
@@ -14,7 +18,7 @@ public function __construct($config){
 
   try {
     $this->conn =   new PDO($dsn, $config['username'], $config['password'], $options);
-    echo "db connected";
+
   } catch (PDOException $e) {
     throw new Exception("Connection failed: " . $e->getMessage());
     

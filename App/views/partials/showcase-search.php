@@ -1,5 +1,5 @@
   <!-- Showcase -->
-  <section
+  <!-- <section
       class="showcase relative bg-cover bg-center bg-no-repeat h-72 flex items-center"
     >
       <div class="overlay"></div>
@@ -25,17 +25,78 @@
           </button>
         </form>
       </div>
-    </section>
+    </section> -->
+
+    <style>
+    .containerimg {
+        display: flex;
+        gap: 10rem;
+        align-items: center;
+        flex-wrap: wrap; /* Allows wrapping to new lines if needed */
+        padding: 1rem; /* Adds some padding for smaller screens */
+    }
+
+    .text {
+        font-size: 2rem;
+        text-align: center; /* Centers the text for better readability */
+    }
+
+    /* Media Queries for Different Screen Sizes */
+
+    /* Small screens (phones) */
+    @media (max-width: 600px) {
+        .containerimg {
+            gap: 2rem; /* Reduces gap for smaller screens */
+            flex-direction: column; /* Stacks items vertically */
+            text-align: center; /* Centers the text */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .text {
+            font-size: 1.5rem; /* Reduces font size for smaller screens */
+        }
+    }
+
+    /* Medium screens (tablets) */
+    @media (min-width: 601px) and (max-width: 1024px) {
+        .containerimg {
+            gap: 5rem; /* Moderate gap for tablets */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .text {
+            font-size: 1.8rem; /* Slightly smaller font size for tablets */
+        }
+    }
+
+    /* Large screens (desktops) */
+    @media (min-width: 1024px) {
+        .containerimg {
+            gap: 5rem; /* Maintains the original gap for larger screens */
+            flex-wrap:nowrap;
+        } 
+
+        .text {
+            font-size: 2rem; /* Original font size */
+        }
+    }
+</style>
 
 
-    <!-- <section>
-      <div>
-      <div class="textandimg">
-      <img src="https://seoandmma.files.wordpress.com/2019/08/fam-1.jpg">
 
-<p>Text text text...</p>
-    
-    </div>  
-    
-    </div>
-</section> -->
+<section>
+<div class="containerimg">
+<img src="/images/showre.png" alt="Showre Image">
+
+<div class="text">  <h2><b>Unlock Your Career Potential</h2></b> <br/> 
+<h4>Find the Ideal Job Opportunity for You.</h4>
+</div>
+
+</div>
+
+
+</section>
+
+  

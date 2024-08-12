@@ -1,6 +1,7 @@
 <?php 
 use Framework\Database;
 use Framework\Validation;
+use Framework\Session;
 
 $config = require basePath("config/db.php");
 $db = new Database($config);
@@ -24,6 +25,14 @@ $listing = $db->query('SELECT * FROM listings WHERE id = :id', $params)->fetch()
 
 if (!$listing) {
     echo "Listing not found.";
+    exit;
+}
+
+//Authorization
+if (Session::get('user')['id'] !== $listing['user_id']) {
+    http_response_code(403);
+    Session::set('error', 'You are not authorized to perform this action.');
+    return header('Location: /');
     exit;
 }
 
@@ -73,7 +82,15 @@ if (!empty($errors)) {
 
     // Include the ID in the update parameters
     $updatedvalues['id'] = $id;
-    
+    //Authorization
+if (Session::get('user')['id'] !== $listing['user_id']) {
+    http_response_code(403);
+    Session::set('error', 'You are not authorized to perform this action.');
+    return header('Location: /');
+    exit;
+}
+
+
     // Execute the update query
     $db->query($updateQuery, $updatedvalues);
 

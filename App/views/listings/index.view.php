@@ -7,6 +7,28 @@
 
 ?>
 
+<style>
+.text-center {
+    text-align: center;
+  
+    
+}
+
+.bg-green{
+  background: green;
+}
+.bg-grey{
+  background:#f5faf7;
+  color: black;
+}
+
+.txtcol{
+  color: black;
+}
+
+
+  </style>
+
 
 
 
@@ -20,10 +42,10 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <!-- Job Listing 1: Software Engineer -->
            <?php foreach($listings as $listing): ?>
-          <div class="rounded-lg shadow-md bg-blue-900 ">
+          <div class="rounded-lg shadow-md bg-grey ">
             <div class="p-4">
-              <h2 class="text-xl font-semibold text-white"><?= $listing["title"] ?></h2>
-              <p class="text-gray-700 text-lg mt-2 text-white">
+              <h2 class="text-xl font-semibold txtcol"><?= $listing["title"] ?></h2>
+              <p class="text-gray-700 text-lg mt-2 txtcol">
               <?= $listing["description"] ?>
               </p>
               <ul class="my-4 bg-white  p-4 rounded">
@@ -53,22 +75,17 @@
       </section>
 
        <!-- Bottom Banner -->
-      <section class="container mx-auto my-6">
+      <section class="container mx-auto my-6 text-center">
       <div
-        class="bg-blue-800 text-white rounded p-4 flex items-center justify-between"
+        class="bg-green text-white rounded p-4 flex items-center justify-center"
       >
         <div>
-          <h2 class="text-xl font-semibold">Looking to hire?</h2>
-          <p class="text-gray-200 text-lg mt-2">
-            Post your job listing now and find the perfect candidate.
+          <h2 class="text-xl font-semibold"></h2>
+          <p class="text-gray-200 text-sm mt-2 text-center">
+            All rights Reserved
           </p>
         </div>
-        <a
-          href="post-job.html"
-          class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded hover:shadow-md transition duration-300"
-        >
-          <i class="fa fa-edit"></i> Post a Job
-        </a>
+      
       </div>
     </section>
      

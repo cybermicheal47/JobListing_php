@@ -1,11 +1,12 @@
 <?php
 use Framework\Database;
 use Framework\Validation;
+use Framework\Session;
 
 $config = require basePath("config/db.php");
 $db = new Database($config);
 
-$listings = $db->query('SELECT * FROM listings')->fetchAll();
+$listings = $db->query('SELECT * FROM listings  ORDER BY created_at DESC')->fetchAll();
 
 $allowedFields = [
     'title', 
@@ -21,7 +22,7 @@ $allowedFields = [
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
     $NewlistingData = array_intersect_key($_POST, array_flip($allowedFields));
-    $NewlistingData['user_id'] = 2;
+    $NewlistingData['user_id'] = Session::get('user')['id'];
     $NewlistingData = array_map('sanitize', $NewlistingData);
 
     $requiredFields = ['title', 'description', 'email'];
@@ -39,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'errors' => $errors,
             'listing' => $NewlistingData
         ]);
+        exit;
     } else {
         $fields = [];
         $values = [];

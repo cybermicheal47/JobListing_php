@@ -2,6 +2,7 @@
 use Framework\Database;
 $config = require basePath("config/db.php");
 $db = new Database($config);
+use Framework\Session;
 
 // // Check if the request method is POST and the _method field is 'DELETE'
 // $isDelete = $_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['_method'] ?? '') === 'DELETE';
@@ -47,6 +48,19 @@ if ($isDelete) {
             ];
             $listing = $db->query('SELECT * FROM listings WHERE id= :id', $params)->fetch();
         }
+
+        //Authorization
+        if (Session::get('user')['id'] !== $listing['user_id']) {
+            http_response_code(403);
+            Session::set('error', 'You are not authorized to perform this action.');
+            return header('Location: /');
+            exit;
+        }
+        
+        
+        
+        
+        
 
         $query = 'DELETE FROM listings WHERE id = :id';
         $db->query($query, $params );

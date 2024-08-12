@@ -5,6 +5,10 @@ require '../helpers.php';
 // require basePath("Framework/Database.php");
 
 use Framework\Router;
+use Framework\Session;
+
+Session::start();
+// inspectandDie(session_status());
 
 // intiate the router
  

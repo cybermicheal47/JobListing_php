@@ -4,10 +4,22 @@
 
   loadPartial('showcase-search');
  loadPartial('topbanner');
-
+ use Framework\Session;
 ?>
 
 
+
+<?php if ($message = Session::getFlash('success')): ?>
+    <div class="alert alert-success">
+        <?= $message ?>
+    </div>
+<?php endif; ?>
+
+<?php if ($message = Session::getFlash('error')): ?>
+    <div class="alert alert-danger">
+        <?= $message ?>
+    </div>
+<?php endif; ?>
 
 
   
